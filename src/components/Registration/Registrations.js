@@ -1,19 +1,33 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getRegistrations } from "../../actions/registrationActions";
+import { getRegistrationss } from "../../actions/registrationActions";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import ApprovalCard from '../../common/ApprovalCard'
+import { approveRegistration,rejectRegistration } from "../../actions/registrationActions";
+
 
 
 class Registrations extends Component {
   componentDidMount(){
-    this.props.getRegistrations();
+    this.props.getRegistrationss();
   }
+
+  onApproveClick = (id) => {
+    this.props.approveRegistration(id);
+  };
+
+  onRejectClick = (id) => {
+    this.props.rejectRegistration(id);
+  };
+
   render() {
     const { registrations } = this.props.registration;
     return (
-      
+      <div className="container">
+        <div className="card card-body bg-light mb-3">
+        <h1>Manage Registrations</h1>
+        </div>
       <table class="ui compact celled definition table">
   <thead>
     <tr>
@@ -37,13 +51,20 @@ class Registrations extends Component {
 	    <td>{registration.hostelId}</td>
 	    <td>{registration.roomId}</td>
       <td>{registration.paymentId}</td>
-      <td><ApprovalCard/></td>
+      <td><div class="extra content">
+      <div class="ui two buttons">
+        <div class="ui basic green button" onClick={this.onApproveClick.bind(this, registration.registrationid)}>Approve</div>
+        <div class="ui basic red button" onClick={this.onRejectClick.bind(this, registration.registrationid)}>Decline</div>
+      </div>
+    </div>
+    </td>
     </tr>
    </tbody> 
     
             ))  
 }
 </table>
+</div>
     );
   }
 }
@@ -51,7 +72,9 @@ class Registrations extends Component {
     
   Registrations.propTypes = {
     registration: PropTypes.object.isRequired,
-    getRegistrations: PropTypes.func.isRequired
+    getRegistrationss: PropTypes.func.isRequired,
+    approveRegistration: PropTypes.func.isRequired
+
   };
   
   const mapStateToProps = state => ({
@@ -60,6 +83,6 @@ class Registrations extends Component {
   
   export default connect(
     mapStateToProps,
-    {getRegistrations}
+    {getRegistrationss,approveRegistration,rejectRegistration}
     ) (Registrations);
   

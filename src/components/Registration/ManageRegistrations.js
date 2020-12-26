@@ -12,6 +12,10 @@ class ManageRegistrations extends Component {
   render() {
     const { registrations } = this.props.registration;
     return (
+      <div className="container">
+      <div className="card card-body bg-light mb-3">
+        <h1>Registrations History</h1>
+        </div>
       <table class="ui compact celled definition table">
   <thead>
     <tr>
@@ -40,6 +44,7 @@ class ManageRegistrations extends Component {
             ))  
 }
 </table>
+</div>
     );
   }
 }

@@ -59,10 +59,6 @@ class AddRoom extends Component {
   render() {
     return (
       <div>
-        {
-          
-        }
-
         <div className="project">
           <div className="container">
             <div className="row" style={{width:'800px', margin:'0 auto' ,marginTop:'100px'}}>

@@ -7,9 +7,7 @@ import {Link} from "react-router-dom";
 
 class Hostels extends Component {
   componentDidMount(){
-   this.props.getHostels(localStorage.getItem.email);
-   //this.props.getHostel("hostel1");
-   // console.log(localStorage.getItem("userId"));
+   this.props.getHostels()
   };
 
   onDeleteClick = (id) => {
@@ -20,58 +18,49 @@ class Hostels extends Component {
     const { hostels } = this.props.hostel;
     return (
       <div className="container">
-        <div className="card card-body bg-light mb-3">
-          <div className="row">
-
-          <div className="col-lg-2 col-md-2 col-4">
-          <h3>Hostel Id</h3>
-          </div>
-            <div className="col-lg-2 col-md-2 col-4">
-              <h3>Hostel Name</h3>
-              
-            </div>
-            <div className="col-lg-2 col-md-2 col-4">
-              <h3>Hostel Type</h3>
-              
-            </div>
-            <div className="col-lg-6 col-md-2 col-4">
-              <h3>Manage Rooms</h3>
-              
-            </div>
-            </div>
-            <hr/>
+      <div className="card card-body bg-light mb-3">
+        <h1>Hostel Details</h1>
+        </div>
+        
+      <table class="ui compact celled definition table">
+      <thead>
+        <tr>
+          <th>Hostel Id</th>
+          <th>Hostel Name</th>
+          <th>Hostel Type</th>
+          <th>Manage Hostels</th>
+        </tr>
+      </thead>
 
             {hostels.map(hostel => (
 
-              <div className="row">
-          <div className="col-lg-2 col-md-2 col-4">
-          <h6>{hostel.hostelid}</h6>
-          </div>
-            <div className="col-lg-2 col-md-2 col-4">
-              <h6>{hostel.hostelName}</h6>
-              
-            </div>
-            <div className="col-lg-2 col-md-2 col-4">
-              <h6>{hostel.hostelType}</h6>
-              
-            </div>
-            <div className="col-lg-2 col-md-2 col-4">
-            <Link to={`/updateHostel/${hostel.hostelid}`}>
-            <i className="fa fa-edit pr-1"> Update</i>
+    <tbody>
+    <tr>
+      <td>{hostel.hostelId}</td>
+      <td>{hostel.hostelName}</td>
+      <td>{hostel.hostelName}</td>
+      <td>
+      <div class="extra content">
+      <div class="ui two buttons">
+        <div class="ui basic green button">
+        <Link to={`/updateHostel/${hostel.hostelid}`}>
+        Update
         </Link>
-            
-          </div>
-          
-          <div className="col-lg-2 col-md-2 col-4" onClick={this.onDeleteClick.bind(this, hostel.hostelid)}>
-          <i className="fa fa-minus-circle pr-1"> Delete</i>  
-      </div>
-          
         </div>
+        <div class="ui basic red button" onClick={this.onDeleteClick.bind(this, hostel.hostelid)}>
+        Delete
+        </div>
+        </div>
+        </div>
+        </td>
+      </tr>
+      </tbody> 
+   
     
           
             ))}
-        </div>
-      </div>
+            </table>
+            </div>
 
     );
   }

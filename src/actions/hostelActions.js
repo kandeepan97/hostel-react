@@ -16,7 +16,7 @@ export const createHostel = (hostel, history) => async dispatch => {
 
 export const getHostels =(id,history) => async dispatch => {
   try{
-    const res = await axios.get(`http://localhost:8080/api/hostels/{email}`);
+    const res = await axios.get(`http://localhost:8080/api/hostels`);
   dispatch({
     type:GET_HOSTELS,
     payload: res.data

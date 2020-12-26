@@ -23,11 +23,11 @@ import UpdateStudent from "./components/Student/UpdateStudent";
 import AddHostel from "./components/Hostel/AddHostel";
 import Hostels from "./components/Hostel/Hostels";
 import UpdateHostel from "./components/Hostel/UpdateHostel";
-import Registrations from "./components/Registration/Registrations";
+import Registrations from "./components/Registration/ManageRegistrations";
 import Login from "./components/UserManagement/Login";
 import RegisterRoom from "./components/Registration/RegisterRoom";
 import UpdateAdmin from "./components/Admin/UpdateAdmin";
-import ManageRegistrations from "./components/Registration/ManageRegistrations";
+import ManageRegistrations from "./components/Registration/Registrations";
 import MyProfileButton from "./components/Warden/MyprofileButton";
 
 
