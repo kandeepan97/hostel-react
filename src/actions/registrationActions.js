@@ -45,6 +45,13 @@ export const getRegistrationss =(id) => async dispatch => {
        // console.log("hostel");
   };
 
+  export const getRoomIds =(email) => async dispatch => {
+    const res = await axios.get(`http://localhost:8080/api/student/email/${email}`);
+    dispatch({
+      type:GET_REGISTRATIONS,
+      payload: res.data
+    });
+    }; 
   
 
     

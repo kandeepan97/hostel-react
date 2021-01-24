@@ -29,6 +29,8 @@ import RegisterRoom from "./components/Registration/RegisterRoom";
 import UpdateAdmin from "./components/Admin/UpdateAdmin";
 import ManageRegistrations from "./components/Registration/Registrations";
 import MyProfileButton from "./components/Warden/MyprofileButton";
+import MyProfileWarden from "./components/Warden/MyProfileWarden";
+import MyProfileAdmin from "./components/Admin/MyProfileAdmin";
 
 
 
@@ -73,8 +75,8 @@ class App extends Component {
           <Route exact path="/registerRoom" component={RegisterRoom} /> 
           <Route exact path="/updateAdmin/:id" component={UpdateAdmin} />
           <Route exact path="/manageRegistration" component={ManageRegistrations} />   
-          <Route exact path="/myProfileWarden" component={""}  />
-          <Route exact path="/myProfileAdmin" component={""}  />
+          <Route exact path="/myProfileWarden" component={MyProfileWarden}  />
+          <Route exact path="/myProfileAdmin" component={MyProfileAdmin}  />
           <Route exact path="/myProfileStudent" component={""}  />
         
 

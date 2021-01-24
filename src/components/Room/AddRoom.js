@@ -13,7 +13,7 @@ class AddRoom extends Component {
       hostelId: "",
       roomid: "",
       numberOfBeds: "",
-      hostelType:"",
+      gender:"",
       floorNumber:"",
       faculty:"",
       year:""
@@ -47,7 +47,7 @@ class AddRoom extends Component {
       hostelId: this.state.hostelId,
       roomid: this.state.roomid,
       numberOfBeds: this.state.numberOfBeds,
-      hostelType:this.state.hostelType,
+      gender:this.state.gender,
       floorNumber:this.state.floorNumber,
       faculty:this.state.faculty,
       year:this.state.year
@@ -110,9 +110,9 @@ class AddRoom extends Component {
                     <input
                     type="text"
                       className="form-control form-control-lg"
-                      placeholder="Hosteltype"
-                      name="hostelType"
-                      value={this.state.hostelType}
+                      placeholder="Gender"
+                      name="gender"
+                      value={this.state.gender}
                       onChange={this.onChange}
                     />
                   </div>

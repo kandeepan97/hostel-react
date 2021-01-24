@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from "prop-types"; 
 import { connect } from "react-redux";
-import { registerRoom } from "../../actions/registrationActions";
+import { registerRoom,getRoomIds } from "../../actions/registrationActions";
 import axios from "axios";
 
 class RegisterRoom extends Component {
@@ -30,6 +30,17 @@ class RegisterRoom extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    let email = localStorage.getItem("email");
+    console.log(email);
+    let roomIds = getRoomIds(email);
+
+    this.state.roomId =  roomIds
+
+    console.log(this.state.roomId);
+
   }
 
   //life cycle hooks
@@ -78,8 +89,9 @@ class RegisterRoom extends Component {
       <div className="container">
       <div className="row" style={{width:'1000px', margin:'10 auto' ,marginTop:'50px'}}>
               <div className="col-md-12 m-auto"></div>
-      <form class="ui form">
+      <div class="ui form">
       <h1 class="ui dividing header">Register Your Room</h1>
+      <form onSubmit={this.onSubmit}>
       <br/>
       <div class="field">
         <label>Name</label>
@@ -224,15 +236,12 @@ class RegisterRoom extends Component {
       <div class="two fields">
         <div class="field">
           <label>Room</label>
-          <select class="ui fluid dropdown">
-            <option value=""></option>
-        <option value="Ampara">Ampara</option>
-        <option value="Anuradhapura">Anuradhapura</option>
-        <option value="Badulla">Badulla</option>
-        <option value="Batticaloa">Batticaloa</option>
-        <option value="Colombo">Colombo</option>
-        value={this.state.paymentId}
-        onChange={this.onChange}
+          <select class="ui fluid dropdown" >
+          {/*{this.state.roomId.map(time => {
+            return (
+              <option value={time}> {time} </option>
+            )
+          })}*/}
         </select>
         </div>
         </div>
@@ -276,7 +285,8 @@ class RegisterRoom extends Component {
        className="btn btn-primary btn-block mt-4"
        />
       <br/>
-    </form>
+      </form>
+    </div>
       </div>
       </div>
       </div>
@@ -285,6 +295,7 @@ class RegisterRoom extends Component {
 }
 
 RegisterRoom.propTypes = {
+  getRoomIds:PropTypes.func.isRequired,
   registerRoom: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -296,6 +307,6 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  {registerRoom}
+  {registerRoom,getRoomIds}
 )(RegisterRoom);
 

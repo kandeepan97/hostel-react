@@ -31,11 +31,21 @@ export const getWarden =(id,history) =>async dispatch=> {
     payload: res.data
   });
   } catch (error) {
-    history.push("/adminDashboard");
+    history.push("/wardenDashboard");
   }
   
 };
 
+
+export const getWardenByEmail =() =>async dispatch=> {
+  
+    let email = localStorage.getItem("email");
+    const res = await axios.get(`http://localhost:8080/api/warden/email/${email}`);
+  dispatch({
+    type:GET_WARDEN,
+    payload: res.data
+  })
+};
 export const updateWarden = (warden, history) => async dispatch => {
   try {
     const res = await axios.put('http://localhost:8080/api/warden', warden);
