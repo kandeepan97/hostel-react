@@ -4,6 +4,7 @@ import { getWardenByEmail,updateWarden } from "../../actions/wardenActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
+import {Button, ButtonToolbar} from "react-bootstrap";
 
  class UpdateWarden extends Component {
 
@@ -78,9 +79,9 @@ import classnames from "classnames";
         return (
             <div className="project">
             <div className="container">
-            <div className="row" style={{width:'800px', margin:'0 auto' ,marginTop:'100px'}}>
+            <div className="row" style={{width:'800px', margin:'0 auto' ,marginTop:'10px'}}>
                 <div className="col-md-8 m-auto">
-                    <h5 className="display-4 text-center">Update Warden</h5>
+                    <h5 className="display-4 text-center">My Details</h5>
                     <hr />
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
@@ -133,10 +134,33 @@ import classnames from "classnames";
             onChange={this.onChange}/>
         </div>
                         
+        <div className="form-button-group">
+        <ButtonToolbar>
+            
+            <Button
+                bsSize="small"
+               
+                style={
+                    {
                         
-
-                        <input type="submit" className="btn btn-primary btn-block mt-4" />
-                    </form>
+                        "width": "30%"
+                    }}
+                type="submit"
+            >
+                Add
+            </Button>
+            
+            <Button
+                bsSize="small"
+                style={{"width": "30%","backgroundColor": "#999",}}
+                type="button"
+                onClick={() => {}}
+            >
+                Cancel
+            </Button>
+        </ButtonToolbar>
+    </div>
+          </form>
                 </div>
             </div>
         </div>
